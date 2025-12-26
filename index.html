@@ -94,43 +94,84 @@ p {
 
 /* ÍCONE DA MÚSICA */
 /* ÍCONE DA MÚSICA (MELHORADO) */
-.music-icon {
+/* PLAYER DE MÚSICA - CHAMATIVO */
+.music-player {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 52px;
-    height: 52px;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px 26px;
+    border-radius: 60px;
+    background: linear-gradient(135deg, #b30000, #ff4d4d);
+    cursor: pointer;
+    box-shadow: 0 0 40px rgba(255, 77, 77, 0.8);
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+.music-player:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 55px rgba(255, 120, 120, 1);
+}
+
+/* ÍCONE */
+.music-icon {
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(6px);
+    background: linear-gradient(135deg, #ffd700, #ffec8b);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    transition: all 0.3s ease;
+    font-size: 28px;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
 }
 
-.music-icon:hover {
-    transform: scale(1.12);
-    background: rgba(255, 255, 255, 0.35);
+/* TEXTO */
+.music-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
 }
 
-/* ANIMAÇÃO QUANDO ESTIVER TOCANDO */
+/* ANIMAÇÃO QUANDO TOCANDO */
 .music-icon.playing {
-    animation: pulse 1.6s infinite;
+    animation: pulse 1.4s infinite;
 }
 
+/* PULSA */
 @keyframes pulse {
     0% {
-        box-shadow: 0 0 15px rgba(255,255,255,0.4);
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(255,215,0,0.7);
     }
     50% {
-        box-shadow: 0 0 30px rgba(255,215,0,0.8);
+        transform: scale(1.15);
+        box-shadow: 0 0 45px rgba(255,215,0,1);
     }
     100% {
-        box-shadow: 0 0 15px rgba(255,255,255,0.4);
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(255,215,0,0.7);
+    }
+}
+
+/* FLUTUA LEVEMENTE */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .music-title {
+        display: none; /* no celular fica só o botão grande */
     }
 }
 
@@ -197,10 +238,10 @@ footer {
 </div>
 
 <!-- ÍCONE DA MÚSICA -->
-<div class="music-icon" id="musicIcon" onclick="toggleMusic()">
-    🎵
+<div class="music-player" onclick="toggleMusic()">
+    <div class="music-icon" id="musicIcon">🎵</div>
+    <span class="music-title">The Fate of Ophelia</span>
 </div>
-
 <audio id="music" loop>
     <source src="WhatsApp-Audio-2025-12-25-at-20.21.20.mp3 (1).mp3" type="audio/mpeg">
 </audio>
@@ -247,5 +288,6 @@ for (let i = 0; i < 45; i++) {
 
 </body>
 </html>
+
 
 
